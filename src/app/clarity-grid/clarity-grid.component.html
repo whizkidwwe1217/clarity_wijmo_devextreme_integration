@@ -1,0 +1,40 @@
+<clr-datagrid>
+    <clr-dg-column style="width: 20px"></clr-dg-column>
+    <clr-dg-column>User ID</clr-dg-column>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Creation date</clr-dg-column>
+    <clr-dg-column>Favorite color</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let user of users">
+      <clr-dg-cell><clr-icon shape="user"></clr-icon></clr-dg-cell>
+      <clr-dg-cell>{{ user.id }}</clr-dg-cell>
+      <clr-dg-cell>
+        <a href="#">Position</a>
+      </clr-dg-cell>
+      <clr-dg-cell>
+        <a href="#">Project</a>
+      </clr-dg-cell>
+      <clr-dg-cell>
+        <a href="#">Team</a>
+      </clr-dg-cell>
+      <clr-dg-cell>
+        <a href="#">Department</a>
+      </clr-dg-cell>
+      <clr-dg-cell>{{ user.creation | date }}</clr-dg-cell>
+      <clr-dg-cell>{{ user.color }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer
+      ><clr-dg-pagination
+        #pagination
+        [clrDgPageSize]="pageSize"
+        [(clrDgPage)]="currentPage"
+      >
+        <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]"
+          >Users per page</clr-dg-page-size
+        >
+        {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+        {{ pagination.totalItems }} users
+      </clr-dg-pagination></clr-dg-footer
+    >
+  </clr-datagrid>
